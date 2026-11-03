@@ -1,0 +1,124 @@
+<div class="container-fluid py-3">
+  <!-- Judul Halaman -->
+  <div class="d-flex justify-content-between align-items-center mb-4">
+    <h3 class="mb-0 text-secondary fw-light">
+      <i class="fa-solid fa-box text-warning me-2"></i> Pengelolaan Data Barang
+    </h3>
+  </div>
+
+  <div class="row">
+    <!-- Card Form CRUD (Kiri / Atas) -->
+    <div class="col-lg-4 col-md-12 mb-4">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-warning text-white py-3">
+          <h5 class="card-title mb-0">
+            <i class="fa-solid" [ngClass]="isEditMode ? 'fa-pen-to-square' : 'fa-plus-circle'"></i>
+            {{ isEditMode ? 'Edit Data Barang' : 'Tambah Barang Baru' }}
+          </h5>
+        </div>
+        <div class="card-body p-4">
+          <form (ngSubmit)="simpanBarang()">
+            <!-- Kode Barang -->
+            <div class="mb-3">
+              <label class="form-label font-weight-bold">Kode Barang</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="kodeBarang" 
+                name="kodeBarang" 
+                placeholder="Contoh: BRG-001" 
+                [disabled]="isEditMode"
+                required>
+              <small class="text-muted" *ngIf="isEditMode">*Kode Barang tidak dapat diubah dalam mode edit.</small>
+            </div>
+
+            <!-- Nama Barang -->
+            <div class="mb-3">
+              <label class="form-label">Nama Barang</label>
+              <input 
+                type="text" 
+                class="form-control" 
+                [(ngModel)]="namaBarang" 
+                name="namaBarang" 
+                placeholder="Masukkan nama barang" 
+                required>
+            </div>
+
+            <!-- Harga Barang -->
+            <div class="mb-4">
+              <label class="form-label">Harga Barang (Rp)</label>
+              <div class="input-group">
+                <span class="input-group-text">Rp</span>
+                <input 
+                  type="number" 
+                  class="form-control" 
+                  [(ngModel)]="hargaBarang" 
+                  name="hargaBarang" 
+                  placeholder="0" 
+                  min="1" 
+                  required>
+              </div>
+            </div>
+
+            <!-- Tombol Aksi -->
+            <div class="d-flex gap-2">
+              <button type="submit" class="btn btn-warning text-white flex-grow-1">
+                <i class="fa-solid fa-floppy-disk me-1"></i> {{ isEditMode ? 'Perbarui' : 'Simpan' }}
+              </button>
+              <button type="button" class="btn btn-secondary" (click)="resetForm()" *ngIf="isEditMode || kodeBarang || namaBarang">
+                <i class="fa-solid fa-rotate-left me-1"></i> Batal
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+
+    <!-- Card Tabel Data (Kanan / Bawah) -->
+    <div class="col-lg-8 col-md-12">
+      <div class="card border-0 shadow-sm">
+        <div class="card-header bg-dark text-white py-3 d-flex justify-content-between align-items-center">
+          <h5 class="card-title mb-0">Daftar Barang</h5>
+          <span class="badge bg-warning text-dark">{{ listBarang.length }} Items</span>
+        </div>
+        <div class="card-body p-0">
+          <div class="table-responsive">
+            <table class="table table-hover align-middle mb-0">
+              <thead class="table-light">
+                <tr>
+                  <th width="80" class="text-center">No</th>
+                  <th>Kode Barang</th>
+                  <th>Nama Barang</th>
+                  <th>Harga Barang</th>
+                  <th width="140" class="text-center">Aksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr *ngFor="let item of listBarang; let i = index">
+                  <td class="text-center">{{ i + 1 }}</td>
+                  <td><span class="badge bg-light text-dark border">{{ item.kodeBarang }}</span></td>
+                  <td class="fw-bold">{{ item.namaBarang }}</td>
+                  <td>Rp {{ item.hargaBarang | number:'1.0-0' }}</td>
+                  <td class="text-center">
+                    <button class="btn btn-sm btn-outline-warning me-1" (click)="editBarang(item)" title="Edit">
+                      <i class="fa-solid fa-pen-to-square"></i>
+                    </button>
+                    <button class="btn btn-sm btn-outline-danger" (click)="hapusBarang(item.kodeBarang)" title="Hapus">
+                      <i class="fa-solid fa-trash-can"></i>
+                    </button>
+                  </td>
+                </tr>
+                <tr *ngIf="listBarang.length === 0">
+                  <td colspan="5" class="text-center py-4 text-muted">
+                    <i class="fa-solid fa-box-open fa-2x mb-2 d-block"></i>
+                    Belum ada data barang. Silakan tambahkan melalui form.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

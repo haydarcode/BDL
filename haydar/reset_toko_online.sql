@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS transaksi_barang;
+DROP TABLE IF EXISTS transaksi;
+DROP TABLE IF EXISTS barang;
+DROP TABLE IF EXISTS pembeli;
+DROP TABLE IF EXISTS penjual;

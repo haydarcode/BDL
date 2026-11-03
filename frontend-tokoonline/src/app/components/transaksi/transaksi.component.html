@@ -1,0 +1,90 @@
+<div class="container my-4">
+  <h2>Form Transaksi Penjualan</h2>
+
+  <!-- Form Input -->
+  <div class="card p-3 mb-4">
+    <div class="row g-3">
+      <div class="col-md-3">
+        <label class="form-label">Kode Transaksi</label>
+        <input type="text" class="form-control" [(ngModel)]="kodeTransaksi" placeholder="TRX-001">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Tanggal Transaksi</label>
+        <input type="date" class="form-control" [(ngModel)]="tanggalTransaksi">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Pembeli</label>
+        <select class="form-select" [(ngModel)]="selectedPembeliKode">
+          <option value="">-- Pilih Pembeli --</option>
+          <option *ngFor="let p of listPembeli" [value]="p.kodePembeli">
+            {{ p.namaPembeli }} ({{ p.kodePembeli }})
+          </option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Penjual</label>
+        <select class="form-select" [(ngModel)]="selectedPenjualKode">
+          <option value="">-- Pilih Penjual --</option>
+          <option *ngFor="let pj of listPenjual" [value]="pj.kodePenjual">
+            {{ pj.namaPenjual }} ({{ pj.kodePenjual }})
+          </option>
+        </select>
+      </div>
+
+      <div class="col-md-4">
+        <label class="form-label">Barang</label>
+        <select class="form-select" [(ngModel)]="selectedBarangKode" (change)="hitungTotal()">
+          <option value="">-- Pilih Barang --</option>
+          <option *ngFor="let b of listBarang" [value]="b.kodeBarang">
+            {{ b.namaBarang }} - Rp{{ b.hargaBarang }}
+          </option>
+        </select>
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Jumlah Barang</label>
+        <input type="number" class="form-control" min="1" [(ngModel)]="jumlahBarang" (input)="hitungTotal()">
+      </div>
+      <div class="col-md-3">
+        <label class="form-label">Total Harga</label>
+        <input type="number" class="form-control" [value]="totalHarga" readonly>
+      </div>
+      <div class="col-md-2 d-flex align-items-end">
+        <button class="btn btn-primary w-100" (click)="simpanTransaksi()">Simpan</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tabel Data Transaksi -->
+  <h3>Daftar Transaksi</h3>
+  <table class="table table-bordered table-striped mt-2">
+    <thead class="table-dark">
+      <tr>
+        <th>Kode Transaksi</th>
+        <th>Tanggal</th>
+        <th>Pembeli</th>
+        <th>Penjual</th>
+        <th>Barang</th>
+        <th>Jumlah</th>
+        <th>Total Harga</th>
+        <th>Aksi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let item of listTransaksi">
+        <td>{{ item.kodeTransaksi }}</td>
+        <td>{{ item.tanggalTransaksi }}</td>
+        <td>{{ item.pembeli?.namaPembeli }}</td>
+        <td>{{ item.penjual?.namaPenjual }}</td>
+        <td>{{ item.barang?.namaBarang }}</td>
+        <td>{{ item.jumlahBarang }}</td>
+        <td>Rp{{ item.totalHarga }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="hapusTransaksi(item.kodeTransaksi)">Hapus</button>
+        </td>
+      </tr>
+      <tr *ngIf="listTransaksi.length === 0">
+        <td colspan="8" class="text-center">Belum ada data transaksi.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

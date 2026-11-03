@@ -1,0 +1,319 @@
+<div class="dashboard-wrapper">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar-brand">
+      <i class="fa-brands fa-angular"></i>
+      <span>CREATIVE TIM</span>
+    </div>
+<ul class="sidebar-menu">
+  <li [class.active]="activeMenu === 'dashboard'">
+    <a (click)="selectMenu('dashboard')" style="cursor: pointer;">
+      <i class="fa-solid fa-border-all"></i> Dashboard
+    </a>
+  </li>
+  <li [class.active]="activeMenu === 'barang'">
+    <a (click)="selectMenu('barang')" style="cursor: pointer;">
+      <i class="fa-solid fa-box"></i> Data Barang
+    </a>
+  </li>
+  <li [class.active]="activeMenu === 'penjual'">
+    <a (click)="selectMenu('penjual')" style="cursor: pointer;">
+      <i class="fa-solid fa-store"></i> Data Penjual
+    </a>
+  </li>
+  <li [class.active]="activeMenu === 'pembeli'">
+    <a (click)="selectMenu('pembeli')" style="cursor: pointer;">
+      <i class="fa-solid fa-users"></i> Data Pembeli
+    </a>
+  </li>
+  <li [class.active]="activeMenu === 'transaksi'">
+    <a (click)="selectMenu('transaksi')" style="cursor: pointer;">
+      <i class="fa-solid fa-receipt"></i> Data Transaksi
+    </a>
+  </li>
+</ul>
+    <div class="sidebar-footer">
+      <button class="btn btn-outline-danger w-100 btn-sm">
+        <i class="fa-solid fa-arrow-up"></i> Upgrade To PRO
+      </button>
+    </div>
+  </aside>
+
+  <!-- Main Content Area -->
+  <main class="main-content">
+    <!-- Top Navbar -->
+    <header class="top-navbar">
+        <h4 class="text-capitalize">{{ activeMenu === 'barang' ? 'Data Barang' : 'Dashboard' }}</h4>
+        <div class="navbar-right">
+        <div class="search-box">
+            <input type="text" placeholder="Search...">
+            <i class="fa-solid fa-magnifying-glass"></i>
+        </div>
+        <div class="nav-icon"><i class="fa-solid fa-bell"></i><span class="badge">5</span></div>
+        <div class="nav-icon"><i class="fa-solid fa-user"></i></div>
+        </div>
+    </header>
+
+    <!-- Top Stat Cards (4 Columns) -->
+    <div class="row">
+      <!-- Card 1 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card card-floating">
+          <div class="card-icon-header bg-orange">
+            <i class="fa-regular fa-clone"></i>
+          </div>
+          <div class="card-stat-body">
+            <p class="card-stat-title">Used Space</p>
+            <h3 class="card-stat-value">49/50 <small>GB</small></h3>
+          </div>
+          <div class="card-footer-custom">
+            <i class="fa-solid fa-triangle-exclamation text-danger"></i>
+            <a href="#" class="text-danger text-decoration-none">Get More Space...</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card card-floating">
+          <div class="card-icon-header bg-green">
+            <i class="fa-solid fa-store"></i>
+          </div>
+          <div class="card-stat-body">
+            <p class="card-stat-title">Revenue</p>
+            <h3 class="card-stat-value">$34,245</h3>
+          </div>
+          <div class="card-footer-custom">
+            <i class="fa-regular fa-calendar"></i> Last 24 Hours
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card card-floating">
+          <div class="card-icon-header bg-red">
+            <i class="fa-solid fa-circle-info"></i>
+          </div>
+          <div class="card-stat-body">
+            <p class="card-stat-title">Fixed Issues</p>
+            <h3 class="card-stat-value">75</h3>
+          </div>
+          <div class="card-footer-custom">
+            <i class="fa-solid fa-tag"></i> Tracked from Github
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-lg-3 col-md-6">
+        <div class="card card-floating">
+          <div class="card-icon-header bg-blue">
+            <i class="fa-brands fa-twitter"></i>
+          </div>
+          <div class="card-stat-body">
+            <p class="card-stat-title">Followers</p>
+            <h3 class="card-stat-value">+245</h3>
+          </div>
+          <div class="card-footer-custom">
+            <i class="fa-solid fa-rotate"></i> Just Updated
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Middle Chart Cards (3 Columns) -->
+    <div class="row">
+      <!-- Chart 1 -->
+      <div class="col-lg-4 col-md-12">
+        <div class="card card-floating">
+          <div class="card-chart-header bg-green">
+            <div class="chart-placeholder-bars">
+              <div class="bar" style="height: 30%"></div>
+              <div class="bar" style="height: 50%"></div>
+              <div class="bar" style="height: 20%"></div>
+              <div class="bar" style="height: 60%"></div>
+              <div class="bar" style="height: 80%"></div>
+              <div class="bar" style="height: 40%"></div>
+              <div class="bar" style="height: 90%"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title mt-2">Daily Sales</h5>
+            <p class="card-text text-muted small"><i class="fa-solid fa-arrow-up text-success"></i> 55% increase in today sales.</p>
+          </div>
+          <div class="card-footer-custom">
+            <i class="fa-regular fa-clock"></i> updated 4 minutes ago
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 2 -->
+      <div class="col-lg-4 col-md-12">
+        <div class="card card-floating">
+          <div class="card-chart-header bg-orange">
+            <div class="chart-placeholder-bars">
+              <div class="bar" style="height: 70%"></div>
+              <div class="bar" style="height: 40%"></div>
+              <div class="bar" style="height: 60%"></div>
+              <div class="bar" style="height: 90%"></div>
+              <div class="bar" style="height: 50%"></div>
+              <div class="bar" style="height: 30%"></div>
+              <div class="bar" style="height: 80%"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title mt-2">Email Subscriptions</h5>
+            <p class="card-text text-muted small">Last Campaign Performance</p>
+          </div>
+          <div class="card-footer-custom">
+            <i class="fa-regular fa-clock"></i> campaign sent 2 days ago
+          </div>
+        </div>
+      </div>
+
+      <!-- Chart 3 -->
+      <div class="col-lg-4 col-md-12">
+        <div class="card card-floating">
+          <div class="card-chart-header bg-red">
+            <div class="chart-placeholder-bars">
+              <div class="bar" style="height: 20%"></div>
+              <div class="bar" style="height: 90%"></div>
+              <div class="bar" style="height: 60%"></div>
+              <div class="bar" style="height: 40%"></div>
+              <div class="bar" style="height: 30%"></div>
+              <div class="bar" style="height: 25%"></div>
+              <div class="bar" style="height: 15%"></div>
+            </div>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title mt-2">Completed Tasks</h5>
+            <p class="card-text text-muted small">Last Campaign Performance</p>
+          </div>
+          <div class="card-footer-custom">
+            <i class="fa-regular fa-clock"></i> campaign sent 2 days ago
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom Tables Section (2 Columns) -->
+    <div class="row">
+      <!-- Tasks List -->
+      <div class="col-lg-6 col-md-12">
+        <div class="card card-floating">
+          <div class="card-table-header bg-purple d-flex justify-content-between align-items-center">
+            <span class="fw-bold">Tasks:</span>
+            <ul class="nav-tabs-custom">
+              <li><button class="active"><i class="fa-solid fa-bug"></i> BUGS</button></li>
+              <li><button><i class="fa-solid fa-code"></i> WEBSITE</button></li>
+              <li><button><i class="fa-solid fa-server"></i> SERVER</button></li>
+            </ul>
+          </div>
+          <div class="card-body p-3">
+            <table class="table table-hover align-middle mb-0">
+              <tbody>
+                <tr>
+                  <td width="40"><input type="checkbox" class="form-check-input" checked></td>
+                  <td>Sign contract for "What are conference organizers afraid of?"</td>
+                  <td text-end width="80">
+                    <button class="btn btn-sm btn-link text-primary"><i class="fa-solid fa-pen"></i></button>
+                    <button class="btn btn-sm btn-link text-danger"><i class="fa-solid fa-xmark"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input"></td>
+                  <td>Lines From Great Russian Literature? Tax Evasion Automated</td>
+                  <td>
+                    <button class="btn btn-sm btn-link text-primary"><i class="fa-solid fa-pen"></i></button>
+                    <button class="btn btn-sm btn-link text-danger"><i class="fa-solid fa-xmark"></i></button>
+                  </td>
+                </tr>
+                <tr>
+                  <td><input type="checkbox" class="form-check-input" checked></td>
+                  <td>Flooded: One year later, assessing what was lost and what was found</td>
+                  <td>
+                    <button class="btn btn-sm btn-link text-primary"><i class="fa-solid fa-pen"></i></button>
+                    <button class="btn btn-sm btn-link text-danger"><i class="fa-solid fa-xmark"></i></button>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- Employees Stats Table -->
+      <div class="col-lg-6 col-md-12">
+        <div class="card card-floating">
+          <div class="card-table-header bg-orange">
+            <h5 class="mb-0 text-white">Employees Stats</h5>
+            <small class="opacity-75">New employees on 15th September, 2016</small>
+          </div>
+          <div class="card-body p-3">
+            <table class="table table-hover align-middle mb-0">
+              <thead>
+                <tr class="text-warning">
+                  <th>ID</th>
+                  <th>Name</th>
+                  <th>Salary</th>
+                  <th>Country</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td>Dakota Rice</td>
+                  <td>$36,738</td>
+                  <td>Niger</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td>Minerva Hooper</td>
+                  <td>$23,789</td>
+                  <td>Curaçao</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td>Sage Rodriguez</td>
+                  <td>$56,142</td>
+                  <td>Netherlands</td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td>Philip Chaney</td>
+                  <td>$38,735</td>
+                  <td>Korea, South</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+        <!-- TAMPILAN DASHBOARD (Hanya muncul jika activeMenu === 'dashboard') -->
+    <div *ngIf="activeMenu === 'dashboard'">
+        <!-- Taruh seluruh baris statistik, grafik, dan tabel bawaan dashboard di sini -->
+        <div class="row">
+        <!-- Card Stat 1, 2, 3, 4 -->
+        ...
+        </div>
+    </div>
+
+    <!-- TAMPILAN DATA BARANG (Hanya muncul jika activeMenu === 'barang') -->
+    <div *ngIf="activeMenu === 'barang'">
+        <app-barang></app-barang>
+    </div>
+
+    <!-- TAMPILAN LAINNYA (Dapat ditambahkan nanti) -->
+    <div *ngIf="activeMenu === 'penjual'" class="alert alert-info mt-3">
+        Fitur Data Penjual sedang dikembangkan.
+    </div>
+    <div *ngIf="activeMenu === 'pembeli'" class="alert alert-info mt-3">
+        Fitur Data Pembeli sedang dikembangkan.
+    </div>
+    <div *ngIf="activeMenu === 'transaksi'" class="alert alert-info mt-3">
+        Fitur Data Transaksi sedang dikembangkan.
+    </div>
+  </main>
+</div>
